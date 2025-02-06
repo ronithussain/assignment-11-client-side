@@ -1,21 +1,52 @@
 import Lottie from 'lottie-react';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import loginLottieImg from '../../assets/login.json.json'
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import loginLottieImg from '../../assets/login.json'
 import loginImg from '../../assets/login.jpg'
 import login2 from '../../assets/login2.jpg'
+import AuthContext from '../../context/AuthContext/AuthContext';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
+    const { handleLoginUser } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [showsPassword, setShowsPassword] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
     const handleLogin = (e) => {
         e.preventDefault();
-        const form = e.target; e;
+        const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email, password)
+        const from = location.state?.from?.pathname || '/';
+
+        // signInWithEmailAndPassword functionality
+        handleLoginUser(email, password)
+            .then(result => {
+                setSuccess(true)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login is Successful!',
+                    text: 'Welcome to our service reviews website.',
+                });
+                navigate(from);
+                console.log(result.user)
+            })
+            .catch(err => {
+                setError(err.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: err.message,
+                });
+                console.log(err.message)
+            })
 
     }
     return (
@@ -53,8 +84,20 @@ const Login = () => {
                             <input type="email" name='email' className="input w-full" placeholder="Enter your email" />
 
                             {/* Password */}
-                            <label className="fieldset-label">Password</label>
-                            <input type="password" name='password' className="input w-full" placeholder="Enter your password" />
+                            <div className='relative'>
+                                <label className="fieldset-label">Password</label>
+                                <input
+                                    type={showsPassword ? "text" : "password"}
+                                    name='password'
+                                    className="input w-full"
+                                    placeholder="Enter your password" />
+                                <button
+                                    type='button'
+                                    onClick={() => setShowsPassword(!showsPassword)}
+                                    className='btn-sm absolute top-8 right-4 text-base'>
+                                    {showsPassword ? <FaEye /> : <FaEyeSlash />}
+                                </button>
+                            </div>
 
                             {/* Register Button */}
                             <button className="btn w-full mt-4">Login</button>

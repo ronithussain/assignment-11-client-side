@@ -1,26 +1,36 @@
 import Lottie from 'lottie-react';
 import registerImg from '../../assets/register.jpg'
-import registerLottieImg from '../../assets/register.json.json'
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import registerLottieImg from '../../assets/register.json'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
+import AuthContext from '../../context/AuthContext/AuthContext';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
 
 
 const Register = () => {
+    const { handleRegister, handleUpdateProfile } = useContext(AuthContext);
     const [error, setError] = useState("")
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [success, setSuccess] = useState(false);
+    const [showsPassword, setShowsPassword] = useState(false);
 
-    const handleRegister = (e) => {
+
+
+    const handleCreateUser = (e) => {
         e.preventDefault();
-        setSuccess(false)
+        // setSuccess(false)
         setError("");
         const form = e.target;
         const name = form.name.value;
         const photoUrl = form.photoUrl.value;
         const email = form.email.value;
         const password = form.password.value;
+
         if (password.length < 6) {
             Swal.fire({
                 icon: 'error',
@@ -29,7 +39,7 @@ const Register = () => {
             });
             return;
         }
-         if (!/[a-z]/.test(password)) {
+        if (!/[a-z]/.test(password)) {
             toast.error("Password must contain at least one lowercase letter");
             return;
         }
@@ -39,6 +49,27 @@ const Register = () => {
         }
 
         console.log(name, photoUrl, email, password)
+
+        // handleRegisterWithEmailAndPassword
+        handleRegister(email, password)
+            .then(res => {
+                handleUpdateProfile(name, photoUrl);
+                setSuccess(true);
+                toast.success('Registration Successful!');
+                console.log(res.user)
+                form.reset();
+                navigate(location?.state?.from || "/");
+            })
+            .catch(err => {
+                setSuccess(false);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Registration Failed!',
+                    text: err.message,
+                });
+                console.log(err.message)
+            })
+
 
     }
     return (
@@ -63,9 +94,9 @@ const Register = () => {
 
                     {/* Form Content */}
                     <div className="relative z-10">
-                        <form 
-                        onSubmit={handleRegister}
-                        className="fieldset space-y-4">
+                        <form
+                            onSubmit={handleCreateUser}
+                            className="fieldset space-y-4">
                             {/* Name */}
                             <label className="fieldset-label">Name</label>
                             <input type="text" name='name' className="input w-full" placeholder="Enter your name" />
@@ -79,8 +110,21 @@ const Register = () => {
                             <input type="email" name='email' className="input w-full" placeholder="Enter your email" />
 
                             {/* Password */}
-                            <label className="fieldset-label">Password</label>
-                            <input type="password" name='password' className="input w-full" placeholder="Enter your password" />
+                            <div className='relative'>
+                                <label className="fieldset-label">Password</label>
+                                <input
+                                    type={showsPassword ? "text" : "password"}
+                                    name='password'
+                                    className="input w-full"
+                                    placeholder="Enter your password" />
+                                <button 
+                                type='button'
+                                onClick={() => setShowsPassword(!showsPassword)}
+                                    className='btn-sm absolute top-8 right-4 text-base'>
+                                    {showsPassword ? <FaEye /> : <FaEyeSlash />}
+                                </button>
+                            </div>
+
 
                             {/* Register Button */}
                             <button className="btn w-full mt-4">Register</button>

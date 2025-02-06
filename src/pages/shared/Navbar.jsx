@@ -1,14 +1,32 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../../context/AuthContext/AuthContext";
 
 
 
 const Navbar = () => {
+  const { user, signOutUser, loading } = useContext(AuthContext);
+  console.log("User Data:", user);
+
+
+  const handleLogOut = () => {
+    signOutUser()
+      .then(() => console.log('Successfully logged out'))
+      .catch(err => console.error('Logout failed:', err.message));
+  };
+
   const links = <>
     <NavLink className="mx-4 nav-link hover:scale-105 transition duration-300 hover:text-orange-500" to="/">Home</NavLink>
     <NavLink className="mx-4 nav-link hover:scale-105 transition duration-300 hover:text-orange-500" to="/service">Service</NavLink>
-    <NavLink className="mx-4 nav-link hover:scale-105 transition duration-300 hover:text-orange-500" to="/add-service">Add Service</NavLink>
-    <NavLink className="mx-4 nav-link hover:scale-105 transition duration-300 hover:text-orange-500" to="/my-reviews">My Reviews</NavLink>
-    <NavLink className="mx-4 nav-link hover:scale-105 transition duration-300 hover:text-orange-500" to="/my-service">My-Service</NavLink>
+    {
+      user && (
+        <>
+          <NavLink className="mx-4 nav-link hover:scale-105 transition duration-300 hover:text-orange-500" to="/add-service">Add Service</NavLink>
+          <NavLink className="mx-4 nav-link hover:scale-105 transition duration-300 hover:text-orange-500" to="/my-reviews">My Reviews</NavLink>
+          <NavLink className="mx-4 nav-link hover:scale-105 transition duration-300 hover:text-orange-500" to="/my-service">My-Service</NavLink>
+        </>
+      )
+    }
   </>
   return (
     <div className="navbar bg-[#714B4E] shadow-sm fixed top-0 w-full z-50 py-4">
@@ -19,7 +37,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
             {links}
           </ul>
         </div>
@@ -34,19 +52,36 @@ const Navbar = () => {
           {links}
         </ul>
       </div>
-      <div className="navbar-end flex gap-3">
 
-        <Link to='/register'>
-          <button className="mx-2 nav-link hover:scale-105 transition duration-300 hover:text-orange-500">Register</button>
-        </Link>
-        <Link to='/login'>
-          <button className="mx-2 nav-link hover:scale-105 transition duration-300 hover:text-orange-500">Login</button>
-        </Link>
-        <div className="avatar avatar-online">
-          <div className="w-12 rounded-full">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-          </div>
-        </div>
+      <div className="navbar-end flex gap-3">
+        {user ? (
+          <>
+            <button
+              onClick={handleLogOut}
+              className="mx-2 nav-link hover:scale-105 transition duration-300 hover:text-orange-500"
+            >
+              LogOut
+            </button>
+            <div className="avatar avatar-online">
+              <div className="w-12 rounded-full">
+                <img
+                  className="rounded-full sm:w-[60px] w-[50px] mr-2 cursor-pointer transition duration-300 hover:scale-105"
+                  src={user?.photoURL || "https://i.ibb.co/2P5D8nV/default-avatar.png"}
+                  alt=""
+                />
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <Link to='/register'>
+              <button className="mx-2 nav-link hover:scale-105 transition duration-300 hover:text-orange-500">Register</button>
+            </Link>
+            <Link to='/login'>
+              <button className="mx-2 nav-link hover:scale-105 transition duration-300 hover:text-orange-500">Login</button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

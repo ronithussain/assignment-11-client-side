@@ -10,6 +10,7 @@ import Service from "../pages/Service";
 import AddService from "../pages/AddService";
 import MyReviews from "../pages/MyReviews";
 import MyService from "../pages/MyService";
+import PrivateRoute from "./PrivateRoute";
 
 
   const router = createBrowserRouter([
@@ -36,15 +37,15 @@ import MyService from "../pages/MyService";
         },
         {
           path: 'add-service',
-          element: <AddService></AddService>,
+          element: <PrivateRoute><AddService></AddService></PrivateRoute>,
         },
         {
           path: 'my-reviews',
-          element: <MyReviews></MyReviews>,
+          element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
         },
         {
           path: 'my-service',
-          element: <MyService></MyService>,
+          element: <PrivateRoute><MyService></MyService></PrivateRoute>,
         },
       ]
     },

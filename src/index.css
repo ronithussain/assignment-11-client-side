@@ -1,3 +1,37 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+ /* nav-link class starts here */
+ .nav-link {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    padding: 0 5px; /* Adds spacing between links */
+    font-size: 23px;
+  }
+  
+  .nav-link:hover {
+    color: orange; /* Light hover effect */
+  }
+  
+  .nav-link.active {
+    color: orangered;
+    font-weight: medium;
+  }
+  
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; 
+    height: 2px; 
+    width: 100%; 
+    background-color: red;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+   /* nav-link class ends here */
