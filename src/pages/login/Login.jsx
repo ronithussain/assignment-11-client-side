@@ -7,6 +7,7 @@ import login2 from '../../assets/login2.jpg'
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import SocialLogin from '../shared/SocialLogin';
 
 
 const Login = () => {
@@ -24,6 +25,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+
         const from = location.state?.from?.pathname || '/';
 
         // signInWithEmailAndPassword functionality
@@ -35,6 +37,7 @@ const Login = () => {
                     title: 'Login is Successful!',
                     text: 'Welcome to our service reviews website.',
                 });
+                form.reset();
                 navigate(from);
                 console.log(result.user)
             })
@@ -101,6 +104,8 @@ const Login = () => {
 
                             {/* Register Button */}
                             <button className="btn w-full mt-4">Login</button>
+
+                            <SocialLogin></SocialLogin>
 
                             {/* Login Link */}
                             <p className="text-xs sm:text-xl text-center">

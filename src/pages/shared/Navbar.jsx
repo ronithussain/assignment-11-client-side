@@ -5,8 +5,8 @@ import AuthContext from "../../context/AuthContext/AuthContext";
 
 
 const Navbar = () => {
-  const { user, signOutUser, loading } = useContext(AuthContext);
-  console.log("User Data:", user);
+  const { user, signOutUser } = useContext(AuthContext);
+  // console.log("User Data:", user);
 
 
   const handleLogOut = () => {
@@ -44,7 +44,7 @@ const Navbar = () => {
 
         <div className=" items-center md:flex hidden">
           <img className="w-14" src="/public/logo-nav.jpg" alt="Logo" />
-          <h3 className="font-medium text-black">Service Reviews</h3>
+          <h3 className="font-medium text-black text-xl">Service Reviews</h3>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

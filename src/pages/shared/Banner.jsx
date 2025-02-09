@@ -1,50 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
-    <div
-      className="relative w-full min-h-screen bg-cover bg-center flex items-center  lg:mt-[95px] mt-[95px]"
-      style={{
-        backgroundImage: "url('https://source.unsplash.com/1600x900/?child')",
-      }}
-    >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
-
-      {/* Movie Details */}
-      <div className="relative max-w-2xl px-10 text-white">
-        <span className="bg-gray-800 text-xs uppercase px-2 py-1 rounded">Action</span>
-        <h1 className="text-5xl font-bold mt-3">Princess Yako</h1>
-
-        <div className="flex items-center space-x-3 mt-2">
-          <span className="bg-yellow-400 text-black px-2 py-1 text-sm font-bold rounded">IMDb</span>
-          <span className="text-lg">8.4</span>
-          <span className="text-lg">•</span>
-          <span className="text-lg">1997</span>
-        </div>
-
-        <p className="mt-4 text-lg">
-          A hardened mercenary's mission becomes a soul-searching race to survive when he's sent
-          into Bangladesh to rescue a drug lord's kidnapped son.
+    <div className="cta-section bg-gradient-to-r from-[#CF3B9A] to-[#FA816C] text-white py-12 px-8 text-center">
+      <h2 className="text-4xl font-semibold mb-4">
+        Unlock the Best Services Today!
+      </h2>
+      <p className="text-xl mb-6">
+        Join thousands of satisfied users who are enhancing their experience by using our service review platform.
+      </p>
+      <div className="cta-buttons flex justify-center space-x-6">
+        <Link
+          to="/register"
+          className="cta-btn bg-yellow-500 text-black px-6 py-3 rounded-full text-xl font-bold hover:bg-yellow-400 transition-colors"
+        >
+          Get Started
+        </Link>
+        <Link
+          to="/learn-more"
+          className="cta-btn bg-transparent border-2 border-white text-white px-6 py-3 rounded-full text-xl font-semibold hover:bg-white hover:text-black transition-colors"
+        >
+          Learn More
+        </Link>
+      </div>
+      <div className="testimonials mt-8">
+        <p className="font-medium">
+          "This service helped me find the best providers! - Jane Doe"
         </p>
-
-        <div className="flex space-x-4 mt-6 font-semibold">
-          <span>Arline Kelley</span>
-          <span>•</span>
-          <span>Julius Barnett</span>
-          <span>•</span>
-          <span>Anthony Lindsey</span>
-        </div>
-
-        {/* Buttons */}
-        <div className="mt-6 flex space-x-4">
-          <button className="bg-red-600 px-6 py-3 rounded-lg text-lg font-bold hover:bg-red-700">
-            Watch Now
-          </button>
-          <button className="bg-white text-black px-6 py-3 rounded-lg text-lg font-bold hover:bg-gray-300">
-            More Details
-          </button>
-        </div>
+        <p className="font-medium mt-2">
+          "Highly recommended for anyone looking for reliable services! - John Smith"
+        </p>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import AddService from "../pages/AddService";
 import MyReviews from "../pages/MyReviews";
 import MyService from "../pages/MyService";
 import PrivateRoute from "./PrivateRoute";
+import ServiceDetails from "../pages/ServiceDetails";
 
 
   const router = createBrowserRouter([
@@ -34,6 +35,11 @@ import PrivateRoute from "./PrivateRoute";
         {
           path: 'service',
           element:<Service></Service>,
+        },
+        {
+          path: 'service-details/:id',
+          element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
+          // loader: ({params}) => fetch(`http://localhost:8000/services/${params.id}`) // loader diye chesta korew console e dekhay but ui te dekhay na. ki j problem?!
         },
         {
           path: 'add-service',
