@@ -66,7 +66,8 @@ const Navbar = () => {
               <div className="w-12 rounded-full">
                 <img
                   className="rounded-full sm:w-[60px] w-[50px] mr-2 cursor-pointer transition duration-300 hover:scale-105"
-                  src={user?.photoURL || "https://i.ibb.co/2P5D8nV/default-avatar.png"}
+                  referrerPolicy="no-referrer"
+                  src={user?.photoURL}
                   alt=""
                 />
               </div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ServiceCard = ({ service }) => {
 
 
-    const { image, title, description, category, price, _id } = service;
+    const { image, title, description, category, price, _id, review_count } = service;
 
 
 
@@ -30,6 +30,7 @@ const ServiceCard = ({ service }) => {
                     <p className="text-gray-400 text-sm mt-2 leading-relaxed">
                         {description.slice(0, 80)}...
                     </p>
+                    <p className="text-gray-400 text-sm mt-2 leading-relaxed">Total Reviews: {review_count}</p>
 
                     {/* প্রাইস ও বাটন */}
                     <div className="flex justify-between items-center mt-6">

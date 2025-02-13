@@ -1,6 +1,7 @@
 import { useState } from "react";
 import UseAuth from "../hooks/UseAuth";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -35,7 +36,8 @@ const AddService = () => {
             category,
             price,
             email,
-            deadline
+            deadline,
+            review_count: 0,
         };
         console.table({formData});
         try{
@@ -155,6 +157,7 @@ const AddService = () => {
                         <DatePicker 
                         selected={startDate} 
                         onChange={(date) => setStartDate(date)} 
+                        dateFormat="P"
                         className="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
                     />
                     </div>

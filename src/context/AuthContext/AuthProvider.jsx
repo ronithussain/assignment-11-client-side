@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { auth } from '../../firebase/firebase.init';
 
 
-const googleProvider = new GoogleAuthProvider
+const googleProvider = new GoogleAuthProvider();
 
 
 
@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
     // onAuthStateChange functionality
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('user state changed', currentUser)
+            // console.log('user state changed', currentUser)
             if (currentUser) {
                 setUser(currentUser)
             }
