@@ -47,7 +47,7 @@ const AddService = () => {
             await axios.post("http://localhost:8000/add-service", formData)
             // form.reset()
             toast.success('Data Added Successfully!')
-            // navigate('/my-service')
+            navigate('/my-service')
         } catch (err) {
             console.log(err.message)
             toast.error(err.message)

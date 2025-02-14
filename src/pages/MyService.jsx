@@ -147,14 +147,30 @@ const MyService = () => {
 
             {/* Delete Modal */}
             <Modal
-                isOpen={showDeleteModal}
-                onRequestClose={() => setShowDeleteModal(false)}
-                contentLabel="Delete Service"
-            >
-                <h2>Are you sure you want to delete this service?</h2>
-                <button onClick={handleDelete} className="px-4 py-2 bg-red-500 text-white rounded-lg">Yes</button>
-                <button onClick={() => setShowDeleteModal(false)} className="px-4 py-2 bg-gray-500 text-white rounded-lg">No</button>
-            </Modal>
+            isOpen={showDeleteModal}
+            onRequestClose={() => setShowDeleteModal(false)}
+            contentLabel="Delete Service"
+            className="fixed inset-0 flex justify-center items-center z-50"
+            overlayClassName="fixed inset-0 bg-black bg-opacity-50"
+        >
+            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+                <h2 className="text-2xl font-bold text-center text-red-600 mb-6">Are you sure you want to delete this service?</h2>
+                <div className="flex justify-between gap-4">
+                    <button
+                        onClick={handleDelete}
+                        className="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
+                    >
+                        Yes, Delete
+                    </button>
+                    <button
+                        onClick={() => setShowDeleteModal(false)}
+                        className="w-full px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition duration-300"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </Modal>
 
             {/* Update Modal */}
             <Modal
@@ -163,10 +179,10 @@ const MyService = () => {
                 contentLabel="Update Service"
                 className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50"
             >
-                <div className="bg-white p-8 rounded-lg shadow-lg w-full sm:w-96">
-                    <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">Update Service</h2>
+                <div className="sm:p-8 p-4  sm:w-3xl w-96 rounded-lg shadow-lg  bordersB text-white">
+                    <h2 className="text-2xl font-semibold mb-6 text-center text-white">Update Service</h2>
                     <div>
-                        <label htmlFor="title" className="block text-sm font-medium text-gray-700">Service Name</label>
+                        <label htmlFor="title" className="block text-sm font-medium">Service Name</label>
                         <input
                             id="title"
                             type="text"
@@ -177,7 +193,7 @@ const MyService = () => {
                         />
                     </div>
                     <div className="mt-4">
-                        <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price</label>
+                        <label htmlFor="price" className="block text-sm font-medium ">Price</label>
                         <input
                             id="price"
                             type="text"
@@ -188,7 +204,7 @@ const MyService = () => {
                         />
                     </div>
                     <div className="mt-4">
-                        <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
+                        <label htmlFor="category" className="block text-sm font-medium">Category</label>
                         <input
                             id="category"
                             type="text"
@@ -199,7 +215,7 @@ const MyService = () => {
                         />
                     </div>
                     <div className="mt-4">
-                        <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
+                        <label htmlFor="description" className="block text-sm font-medium">Description</label>
                         <textarea
                             id="description"
                             value={updatedService.description}
@@ -208,7 +224,7 @@ const MyService = () => {
                             className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
                     </div>
-                    <div className="flex justify-between mt-6">
+                    <div className="flex justify-center gap-4 mt-6">
                         <button
                             onClick={handleUpdate}
                             className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200"
