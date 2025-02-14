@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import navImg from '../../assets/nav.jpg'
 
 
 
@@ -29,7 +30,11 @@ const Navbar = () => {
     }
   </>
   return (
-    <div className="navbar bg-[#714B4E] shadow-sm fixed top-0 w-full z-50 py-4">
+    <div className="navbar bg-[#030304] shadow-sm fixed top-0 w-full z-50 py-4" style={{
+                        backgroundImage: `url(${navImg})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }}>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +49,7 @@ const Navbar = () => {
 
         <div className=" items-center md:flex hidden">
           <img className="w-14" src="/public/logo-nav.jpg" alt="Logo" />
-          <h3 className="font-medium text-black text-xl">Service Reviews</h3>
+          <h3 className="font-medium  sm:text-2xl  mb-2 md:text-3xl bg-gradient-to-r from-white via-white/70 to-[#1E3E62] text-transparent bg-clip-text text-xl">Service Reviews</h3>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

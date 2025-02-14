@@ -5,6 +5,7 @@ import axios from 'axios';
 import DeleteModal from './Modals/DeleteModal';
 import UpdateModal from './Modals/updateModal';
 import DatePicker from 'react-datepicker';
+import formBgImg from '../assets/form.jpg'
 
 const MyReviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -92,44 +93,64 @@ const MyReviews = () => {
     }
 
     return (
-        <div className='lg:mt-[120px] mt-[130px]'>
-            <div className="min-h-screen bg-gray-100 py-12 px-6">
-                <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-                    <h2 className="text-2xl font-semibold text-gray-700 mb-4">Your Reviews</h2>
+        <div className="lg:mt-[120px] mt-[130px]" style={{
+            backgroundImage: `url(${formBgImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+        }}>
+            <div className="min-h-screen  py-12 px-6">
+                <div className="max-w-6xl  space-y-6 mx-auto">
+                    <h2 className='lg:text-5xl text-2xl  md:text-3xl font-bold bg-gradient-to-r from-white via-white/70 to-[#1E3E62] text-transparent bg-clip-text text-center mb-6'>Your Reviews"</h2>
 
                     {/* Display reviews dynamically */}
                     {reviews.length > 0 ? (
                         reviews.map((review) => (
-                            <div key={review._id} className="bg-white shadow-md rounded-lg p-4 mb-6">
-                                <h3 className="text-xl font-bold text-gray-800">{review.serviceTitle}</h3>
-                                <p className="text-gray-600 mt-2">{review.review}</p>
-                                <p className="text-gray-600 mt-2">Rating: {review.rating}/5</p>
-                                <DatePicker
-                                    className='border p-2 rounded-md'
+                            <div key={review._id} className="rounded-xl p-6 mb-6 transition-transform transform hover:scale-105 hover:shadow-xl duration-300 bordersB">
+                                <div className="avatar avatar-online" >
+                                    <div className="w-12 mb-2">
+                                        <img
+                                            className=" sm:w-[60px] w-[50px] mr-2 cursor-pointer transition duration-300 hover:scale-105"
+                                            referrerPolicy="no-referrer"
+                                            src={user?.photoURL}
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                                <h3 className="text-2xl font-bold text-gray-300">{review.serviceTitle}</h3>
+                                <p className="text-gray-400 mt-2 text-lg">{review.review}</p>
+                                <p className="text-gray-400 mt-2 text-lg">Rating: {review.rating}/5</p>
+
+                                {/* Date Picker */}
+                                <div className="mt-1 text-gray-400">Date: <DatePicker
+                                    className="w-full border-none focus:ring-2 focus:ring-indigo-500"
                                     selected={startDate}
-                                    onChange={date => setStartDate(date)}
+                                    onChange={(date) => setStartDate(date)}
                                 />
+                                </div>
 
                                 {/* Buttons */}
-                                <div className="mt-4 flex space-x-4">
+                                <div className="mt-3 flex space-x-6">
                                     <button
                                         onClick={() => openUpdateModal(review)}
-                                        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                                        className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-2 px-6 rounded-md transform hover:scale-105 hover:from-blue-600 hover:to-indigo-600 transition duration-300 ease-in-out"
+                                    >
                                         Update
                                     </button>
                                     <button
                                         onClick={() => openDeleteModal(review)}
-                                        className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600">
+                                        className="bg-gradient-to-r from-red-500 to-orange-500 text-white py-2 px-6 rounded-md transform hover:scale-105 hover:from-red-600 hover:to-orange-600 transition duration-300 ease-in-out"
+                                    >
                                         Delete
                                     </button>
                                 </div>
                             </div>
                         ))
                     ) : (
-                        <p className="text-center text-gray-600">You have no reviews yet.</p>
+                        <p className="text-center text-gray-600 text-lg">You have no reviews yet.</p>
                     )}
                 </div>
             </div>
+
             {/* 🛠 Delete Confirmation Modal */}
             <DeleteModal
                 isOpen={isDeleteOpen}
@@ -137,6 +158,7 @@ const MyReviews = () => {
                 onConfirm={() => handleDelete(selectedReview?._id)}
                 reviewTitle={selectedReview?.serviceTitle}
             />
+
             {/* Update Review Modal */}
             <UpdateModal
                 isOpen={isUpdateOpen}
@@ -144,8 +166,10 @@ const MyReviews = () => {
                 onUpdate={handleUpdate}
                 review={selectedReview}
             />
-
         </div>
+
+
+
     );
 };
 

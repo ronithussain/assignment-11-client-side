@@ -13,7 +13,7 @@ const DeleteModal = ({isOpen, onClose, onConfirm, reviewTitle}) => {
                     </h2>
                     <p className="text-gray-600 my-4">Are you sure? This action cannot be undone.</p>
 
-                    {/* Modal-এর Cancel ও Delete বাটন */}
+                    {/* modal cancel or delete btn*/}
                     <div className="flex justify-end space-x-4">
                         <button
                           onClick={onClose}

@@ -9,6 +9,11 @@ const Footer = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
         }}>
+            
+
+
+
+
             {/* Footer Section */}
             <footer className=" text-gray-300 py-14">
                 <div className="w-10/12 mx-auto md:px-10">

@@ -4,16 +4,19 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import footerBg from '../assets/footer-bg.jpg'
 
 
 const AddService = () => {
-    const {user} = UseAuth();
+    const { user } = UseAuth();
     const [startDate, setStartDate] = useState(new Date());
+    const navigate = useNavigate();
 
 
 
 
-    const handleOnSubmit = async(e) => {
+    const handleOnSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const image = form.image.value;
@@ -39,23 +42,31 @@ const AddService = () => {
             deadline,
             review_count: 0,
         };
-        console.table({formData});
-        try{
+        console.table({ formData });
+        try {
             await axios.post("http://localhost:8000/add-service", formData)
             // form.reset()
             toast.success('Data Added Successfully!')
-        }catch(err){
+            // navigate('/my-service')
+        } catch (err) {
             console.log(err.message)
             toast.error(err.message)
         }
     };
 
     return (
-        <div className=" lg:mt-[120px] mt-[130px] flex justify-center items-center min-h-screen p-6">
-            <div className="bg-gray-900 text-white p-8 rounded-xl shadow-2xl w-full max-w-2xl">
-                <h2 className="text-3xl font-bold text-center text-blue-400 mb-6">Add a New Service</h2>
-                <form onSubmit={handleOnSubmit} className="space-y-6">
-
+        <div className="lg:mt-[120px] mt-[130px] flex justify-center items-center sm:min-h-screen h-full sm:p-6 py-6 " style={{
+            backgroundImage: `url(${footerBg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+        }}>
+            <div className=" text-white sm:p-8 p-2 rounded-xl w-full max-w-4xl borders" style={{
+            backgroundImage: `url(${footerBg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+        }}>
+                <h2 className='lg:text-5xl text-2xl  md:text-3xl font-bold bg-gradient-to-r from-white via-white/70 to-[#1E3E62] text-transparent bg-clip-text text-center mb-6'>Add New Service</h2>
+                <form onSubmit={handleOnSubmit} className="sm:space-y-6 space-y-3">
                     {/* Service Image */}
                     <div>
                         <label className="block font-semibold">Service Image URL</label>
@@ -145,7 +156,7 @@ const AddService = () => {
                         <input
                             type="email"
                             name="userEmail"
-                            value={user?.email || ""} 
+                            value={user?.email || ""}
                             readOnly
                             className="w-full p-3 rounded-lg bg-gray-700 text-gray-300 focus:outline-none cursor-not-allowed"
                         />
@@ -154,12 +165,12 @@ const AddService = () => {
                     {/* Date Picker */}
                     <div>
                         <label className="block font-semibold">Added Date</label>
-                        <DatePicker 
-                        selected={startDate} 
-                        onChange={(date) => setStartDate(date)} 
-                        dateFormat="P"
-                        className="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                    />
+                        <DatePicker
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            dateFormat="P"
+                            className="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                        />
                     </div>
 
                     {/* Submit Button */}
