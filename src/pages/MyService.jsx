@@ -6,13 +6,15 @@ Modal.setAppElement('#root');
 import toast from 'react-hot-toast';
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
+import UseAxiosSecure from '../hooks/UseAxiosSecure';
 
 
 const MyService = () => {
     const { user } = UseAuth();
     const [myServices, setMyServices] = useState([]);
     // search
-    const [search, setSearch] = useState('');
+    // const [search, setSearch] = useState('');
+
 
     // delete modal work
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -23,17 +25,21 @@ const MyService = () => {
     const [updatedService, setUpdatedService] = useState({ title: '', price: '', category: '', description: '' });
 
 
+    // Use axios customs hook
+    const axiosSecure = UseAxiosSecure()
     useEffect(() => {
-        axios.get(`http://localhost:8000/my-service/${user?.email}?search=${search}`)
-            .then(response => {
-                setMyServices(response.data);
+        // axios.get(`http://localhost:8000/my-service/${user?.email}?search=${search}`, {withCredentials: true})
+        //     .then(response => {
+        //         setMyServices(response.data);
 
-            })
+        //     })
+        axiosSecure.get(`/my-service/${user?.email}`)
+            .then(res => setMyServices(res.data))
             .catch(error => {
                 console.error('Error fetching services:', error);
 
             });
-    }, [user?.email, search]);
+    }, [user?.email]);
     console.log(myServices)
 
     // delete functionality

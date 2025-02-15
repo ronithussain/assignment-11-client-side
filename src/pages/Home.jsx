@@ -9,7 +9,7 @@ const Home = () => {
         <div className='lg:mt-[120px] mt-[110px] '>
             <Carousel></Carousel>
             <div className='bg-gradient-to-b from-[#1A1618] to-[#1A1618]'>
-            <HomeCard></HomeCard>
+            {/* <HomeCard></HomeCard> */}
             <AboutPage></AboutPage>
             </div>
             <Banner></Banner>
