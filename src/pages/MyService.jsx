@@ -11,6 +11,8 @@ import { RiDeleteBinLine } from "react-icons/ri";
 const MyService = () => {
     const { user } = UseAuth();
     const [myServices, setMyServices] = useState([]);
+    // search
+    const [search, setSearch] = useState('');
 
     // delete modal work
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -22,7 +24,7 @@ const MyService = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/my-service/${user?.email}`)
+        axios.get(`http://localhost:8000/my-service/${user?.email}?search=${search}`)
             .then(response => {
                 setMyServices(response.data);
 
@@ -31,7 +33,7 @@ const MyService = () => {
                 console.error('Error fetching services:', error);
 
             });
-    }, [user?.email]);
+    }, [user?.email, search]);
     console.log(myServices)
 
     // delete functionality
@@ -84,11 +86,14 @@ const MyService = () => {
             <div className="container mx-auto p-6  min-h-screen flex flex-col items-center">
 
                 {/* Search Input */}
-                <div className="w-full max-w-lg mb-6">
+                <div className="w-full  mb-6">
                     <input
                         type="text"
-                        placeholder="Search services..."
-                        className="w-full p-4 border-2 border-gray-300 rounded-lg shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:border-indigo-500 hover:border-indigo-400 bg-white transition-all duration-300 ease-in-out"
+                        name='search'
+                        onChange={e => setSearch(e.target.value)}
+                        placeholder="Search your services..."
+                        className="w-full px-4 py-3 rounded-lg shadow-md text-gray-900 bg-white border border-gray-300 
+                     focus:outline-none focus:ring-4 focus:ring-indigo-500 transition-all duration-300 ease-in-out"
                     />
                 </div>
 
@@ -139,7 +144,7 @@ const MyService = () => {
                                     </td>
                                 </tr>
                             ))}
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -147,30 +152,30 @@ const MyService = () => {
 
             {/* Delete Modal */}
             <Modal
-            isOpen={showDeleteModal}
-            onRequestClose={() => setShowDeleteModal(false)}
-            contentLabel="Delete Service"
-            className="fixed inset-0 flex justify-center items-center z-50"
-            overlayClassName="fixed inset-0 bg-black bg-opacity-50"
-        >
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-                <h2 className="text-2xl font-bold text-center text-red-600 mb-6">Are you sure you want to delete this service?</h2>
-                <div className="flex justify-between gap-4">
-                    <button
-                        onClick={handleDelete}
-                        className="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
-                    >
-                        Yes, Delete
-                    </button>
-                    <button
-                        onClick={() => setShowDeleteModal(false)}
-                        className="w-full px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition duration-300"
-                    >
-                        Cancel
-                    </button>
+                isOpen={showDeleteModal}
+                onRequestClose={() => setShowDeleteModal(false)}
+                contentLabel="Delete Service"
+                className="fixed inset-0 flex justify-center items-center z-50"
+                overlayClassName="fixed inset-0 bg-black bg-opacity-50"
+            >
+                <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+                    <h2 className="text-2xl font-bold text-center text-red-600 mb-6">Are you sure you want to delete this service?</h2>
+                    <div className="flex justify-between gap-4">
+                        <button
+                            onClick={handleDelete}
+                            className="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
+                        >
+                            Yes, Delete
+                        </button>
+                        <button
+                            onClick={() => setShowDeleteModal(false)}
+                            className="w-full px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition duration-300"
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </Modal>
+            </Modal>
 
             {/* Update Modal */}
             <Modal
