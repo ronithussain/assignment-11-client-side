@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
 const AboutPage = () => {
+  
   const testimonials = [
     {
       id: 1,
@@ -29,15 +30,15 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-6">
+    <div className="min-h-screen bg-[#2E2E2E] pt-22 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section 1: Why Choose Us */}
         <section className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Why Choose Us?</h2>
+        <h2 className='lg:text-5xl text-2xl  md:text-3xl font-bold bg-gradient-to-r from-white via-white/70 to-[#1E3E62] text-transparent bg-clip-text text-center mb-6'>Why Choose Us?</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-white p-6 rounded-lg shadow-lg text-center"
+              className="bg-gradient-to-r from-white via-white/90 to-[#1E3E62] p-6 rounded-lg shadow-lg text-center "
             >
               <h3 className="text-xl font-semibold text-blue-600">Trusted Reviews</h3>
               <p className="text-gray-600 mt-2">
@@ -47,7 +48,7 @@ const AboutPage = () => {
 
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-white p-6 rounded-lg shadow-lg text-center"
+              className="bg-white p-6 rounded-lg shadow-lg text-center bg-gradient-to-r from-white via-white/10 to-[#1E3E62]"
             >
               <h3 className="text-xl font-semibold text-blue-600">Secure Platform</h3>
               <p className="text-gray-600 mt-2">
@@ -57,7 +58,7 @@ const AboutPage = () => {
 
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-white p-6 rounded-lg shadow-lg text-center"
+              className="bg-white p-6 rounded-lg shadow-lg text-center bg-gradient-to-r from-white via-white/10 to-[#1E3E62]"
             >
               <h3 className="text-xl font-semibold text-blue-600">User-Friendly</h3>
               <p className="text-gray-600 mt-2">
@@ -69,8 +70,8 @@ const AboutPage = () => {
 
         {/* Section 2: */}
         <section >
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">What Our Users Say</h2>
-          <div className="flex overflow-x-auto sm:space-x-6 space-x-3 p-4">
+        <h2 className='lg:text-5xl text-2xl  md:text-3xl font-bold bg-gradient-to-r from-white via-white/70 to-[#1E3E62] text-transparent bg-clip-text text-center mb-6'>What Our Users Say</h2>
+          <div className="flex overflow-x-auto sm:space-x-6 space-x-3 p-4 bg-gradient-to-r from-white via-white/70 to-[#1E3E62]">
             {testimonials.map((testimonial) => (
               <motion.div
                 key={testimonial.id}

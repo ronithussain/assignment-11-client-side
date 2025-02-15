@@ -93,7 +93,7 @@ const MyReviews = () => {
     }
 
     return (
-        <div className="lg:mt-[120px] mt-[130px]" style={{
+        <div className="lg:mt-[120px] mt-[110px]" style={{
             backgroundImage: `url(${formBgImg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",

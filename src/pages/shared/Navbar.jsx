@@ -47,10 +47,10 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className=" items-center md:flex hidden">
+        <Link to='/' className=" items-center md:flex hidden">
           <img className="w-14" src="/public/logo-nav.jpg" alt="Logo" />
           <h3 className="font-medium  sm:text-2xl  mb-2 md:text-3xl bg-gradient-to-r from-white via-white/70 to-[#1E3E62] text-transparent bg-clip-text text-xl">Service Reviews</h3>
-        </div>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

@@ -55,7 +55,7 @@ const AddService = () => {
     };
 
     return (
-        <div className="lg:mt-[120px] mt-[130px] flex justify-center items-center sm:min-h-screen h-full sm:p-6 py-6 " style={{
+        <div className="lg:mt-[120px] mt-[110px] flex justify-center items-center sm:min-h-screen h-full sm:p-6 py-6 " style={{
             backgroundImage: `url(${footerBg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -176,7 +176,7 @@ const AddService = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full p-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg rounded-lg transition duration-300"
+                        className="w-full p-3 text-white bg-gradient-to-r from-blue-500 rounded-xl shadow-lg transition-all duration-300 hover:shadow-blue-400/60 active:scale-95 text-center block"
                     >
                         Add Service
                     </button>

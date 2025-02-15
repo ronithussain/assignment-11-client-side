@@ -12,6 +12,7 @@ import MyReviews from "../pages/MyReviews";
 import MyService from "../pages/MyService";
 import PrivateRoute from "./PrivateRoute";
 import ServiceDetails from "../pages/ServiceDetails";
+import AboutPage from "../components/AboutPage";
 
 
   const router = createBrowserRouter([
@@ -53,6 +54,10 @@ import ServiceDetails from "../pages/ServiceDetails";
           path: 'my-service',
           element: <PrivateRoute><MyService></MyService></PrivateRoute>,
         },
+        {
+          path:'about-page',
+          element: <PrivateRoute><AboutPage></AboutPage></PrivateRoute>
+        }
       ]
     },
   ]);

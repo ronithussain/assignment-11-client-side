@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext/AuthContext";
 import { Navigate, useLocation } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 
 const PrivateRoute = ({children}) => {
@@ -8,7 +9,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
     // console.log(location)
     if(loading){
-        return <div className='flex justify-center items-center text-red-500 min-h-screen'><span className="loading loading-bars loading-lg"></span></div>
+        return <LoadingSpinner/>
     }
     if (!user) {
         return <Navigate to="/login" state={{ from: location || "/" }} replace />;

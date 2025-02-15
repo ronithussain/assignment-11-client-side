@@ -85,7 +85,7 @@ const ServiceDetails = () => {
             await axios.post('http://localhost:8000/add-reviews', formData);
             form.reset();
             toast.success('Review added successfully!');
-            navigate('/my-reviews');
+           
         } catch (err) {
             console.log(err);
             toast.error(err.message);
