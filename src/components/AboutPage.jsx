@@ -30,7 +30,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#2E2E2E] pt-22 px-6">
+    <div className="min-h-screen bg-[#2E2E2E] py-22 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section 1: Why Choose Us */}
         <section className="mb-12">

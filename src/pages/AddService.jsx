@@ -44,18 +44,18 @@ const AddService = () => {
         };
         console.table({ formData });
         try {
-            await axios.post("http://localhost:8000/add-service", formData)
+            await axios.post("https://assignment-11-server-side-ashen.vercel.app/add-service", formData)
             // form.reset()
             toast.success('Data Added Successfully!')
             navigate('/my-service')
         } catch (err) {
-            console.log(err.message)
+            // console.log(err.message)
             toast.error(err.message)
         }
     };
 
     return (
-        <div className="lg:mt-[120px] mt-[110px] flex justify-center items-center sm:min-h-screen h-full sm:p-6 py-6 " style={{
+        <div className="lg:mt-[105px] mt-[105px] flex justify-center items-center sm:min-h-screen h-full sm:p-6 sm:py-18 py-6 " style={{
             backgroundImage: `url(${footerBg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",

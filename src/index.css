@@ -7,7 +7,7 @@
     text-decoration: none;
     color: white;
     padding: 0 5px; /* Adds spacing between links */
-    font-size: 23px;
+    font-size: 20px;
   }
   
   .nav-link:hover {
@@ -15,8 +15,8 @@
   }
   
   .nav-link.active {
-    color: orangered;
-    font-weight: medium;
+    color: rgb(231, 23, 23);
+    font-weight: 600;
   }
   
   .nav-link.active::after {

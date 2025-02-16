@@ -6,10 +6,10 @@ import Banner from './shared/Banner';
 
 const Home = () => {
     return (
-        <div className='lg:mt-[120px] mt-[110px] '>
+        <div className='lg:mt-[105px] mt-[105px] '>
             <Carousel></Carousel>
             <div className='bg-gradient-to-b from-[#1A1618] to-[#1A1618]'>
-            {/* <HomeCard></HomeCard> */}
+            <HomeCard></HomeCard>
             <AboutPage></AboutPage>
             </div>
             <Banner></Banner>

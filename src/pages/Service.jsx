@@ -16,7 +16,7 @@ const Service = () => {
 
     useEffect(() => {
         // service all data fetch in this api
-        axios.get(`http://localhost:8000/services?filter=${filter}&search=${search}`)
+        axios.get(`https://assignment-11-server-side-ashen.vercel.app/services?filter=${filter}&search=${search}`)
             .then(response => {
                 setServices(response.data);
                 setCountUp(prev => ({ ...prev, services: response.data.length }));// countUp setStates data
@@ -28,7 +28,7 @@ const Service = () => {
             });
 
         // user reviews, service count fetching;
-        axios.get('http://localhost:8000/stats')
+        axios.get('https://assignment-11-server-side-ashen.vercel.app/stats')
             .then(response => {
                 setCountUp(response.data);
             })
@@ -37,14 +37,14 @@ const Service = () => {
             });
 
     }, [filter,search]);
-    console.log(filter);
+    // console.log(filter);
 
     if (loading) {
         return <LoadingSpinner></LoadingSpinner>;
     }
 
     return (
-        <div className=' lg:mt-[120px] mt-[110px]  py-12' style={{
+        <div className=' lg:mt-[100px] mt-[100px]  min-h-screen' style={{
             backgroundImage: `url(${footerBg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",

@@ -1,6 +1,7 @@
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import footerBg from '../../assets/footer-bg.jpg'
+import footerLogo from '../../assets/logo.png'
 
 const Footer = () => {
     return (
@@ -9,10 +10,6 @@ const Footer = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
         }}>
-            
-
-
-
 
             {/* Footer Section */}
             <footer className=" text-gray-300 py-14">
@@ -22,12 +19,12 @@ const Footer = () => {
                         className="grid grid-cols-1 md:grid-cols-4 gap-8 ">
                         {/* Logo and Description */}
                         <div>
-                        <div className="flex items-center">
-          <img className="w-16" src="/public/logo-nav.jpg" alt="Logo" />
-          <h3 className="font-medium text-2xl">Service Reviews</h3>
-        </div>
+                            <div className="flex items-center">
+                                <img className="w-16" src={footerLogo} alt="Logo" />
+                                <h3 className="font-medium text-2xl">Service Reviews</h3>
+                            </div>
                             <p>A Service Review System is a web-based platform that allows users to review and rate various services.</p>
-                            
+
                         </div>
 
                         {/* Movies Links */}
@@ -36,8 +33,8 @@ const Footer = () => {
                                 SERVICE
                             </h4>
                             <ul className="mt-4 space-y-2 flex flex-col">
-                                <Link to='/aboutUs' className="link link-hover hover:text-white">About Us</Link>
-                                <Link to='/views' className="link link-hover hover:text-white">Views</Link>
+                                <Link to='/about-us' className="link link-hover hover:text-white">About Us</Link>
+                                <Link to='/terms-and-policy' className="link link-hover hover:text-white">Terms & Policy</Link>
                             </ul>
                         </div>
 
@@ -47,7 +44,7 @@ const Footer = () => {
                                 ADDITIONAL
                             </h4>
                             <ul className="mt-4 space-y-2">
-                                <Link to='/contactUs' className="link link-hover hover:text-white">Contact Us</Link>
+                                <Link to='/contact-us' className="link link-hover hover:text-white">Contact Us</Link>
                             </ul>
                         </div>
 
@@ -78,7 +75,7 @@ const Footer = () => {
                             </a>
                         </div>
                     </div>
-                        <p className="mt-2 text-center text-gray-400">Copyright © 2024. All rights reserved.</p>
+                    <p className="mt-2 text-center text-gray-400">Copyright © 2024. All rights reserved.</p>
                 </div>
             </footer>
 

@@ -13,6 +13,9 @@ import MyService from "../pages/MyService";
 import PrivateRoute from "./PrivateRoute";
 import ServiceDetails from "../pages/ServiceDetails";
 import AboutPage from "../components/AboutPage";
+import AboutUs from "../pages/AboutUs";
+import TermsPolicy from "../pages/TermsPolicy";
+import ContactUs from "../pages/ContactUs";
 
 
   const router = createBrowserRouter([
@@ -40,7 +43,7 @@ import AboutPage from "../components/AboutPage";
         {
           path: 'service-details/:id',
           element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
-          // loader: ({params}) => fetch(`http://localhost:8000/services/${params.id}`) // loader diye chesta korew console e dekhay but ui te dekhay na. ki j problem?!
+          // loader: ({params}) => fetch(`https://assignment-11-server-side-ashen.vercel.app/services/${params.id}`) // loader diye chesta korew console e dekhay but ui te dekhay na. ki j problem?!
         },
         {
           path: 'add-service',
@@ -57,7 +60,19 @@ import AboutPage from "../components/AboutPage";
         {
           path:'about-page',
           element: <PrivateRoute><AboutPage></AboutPage></PrivateRoute>
-        }
+        },
+        {
+          path: 'about-us',
+          element: <AboutUs></AboutUs>
+        },
+        {
+          path: 'terms-and-policy',
+          element: <TermsPolicy></TermsPolicy>
+        },
+        {
+          path: 'contact-us',
+          element: <ContactUs></ContactUs>
+        },
       ]
     },
   ]);

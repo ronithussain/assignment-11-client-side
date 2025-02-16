@@ -13,10 +13,10 @@ const SocialLogin = () => {
         signInWithGoogle()
             .then(result => {
                 navigate('/');
-                console.log(result.user)
+                // console.log(result.user)
             })
             .catch(error => {
-                console.log(error.message)
+                // console.log(error.message)
             })
     }
     return (

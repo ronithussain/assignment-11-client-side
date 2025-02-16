@@ -19,12 +19,12 @@ const Banner = () => {
         >
           Get Started
         </Link>
-        <Link
-          to="/learn-more"
-          className="cta-btn bg-transparent border-2 border-white text-white px-6 py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-white hover:text-black transition-colors w-full sm:w-auto text-center"
+        <a  
+         
+          className="cta-btn bg-transparent border-2 border-white text-white px-6 py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-white hover:text-black transition-colors w-full sm:w-auto text-center" href="https://elfsight.com" target="_blank" rel="noopener noreferrer"
         >
           Learn More
-        </Link>
+        </a>
       </div>
 
       <div className="testimonials mt-8">

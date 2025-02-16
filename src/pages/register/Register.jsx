@@ -48,7 +48,7 @@ const Register = () => {
             return;
         }
 
-        console.log(name, photoUrl, email, password)
+        // console.log(name, photoUrl, email, password)
 
         // handleRegisterWithEmailAndPassword
         handleRegister(email, password)
@@ -56,7 +56,7 @@ const Register = () => {
                 handleUpdateProfile(name, photoUrl);
                 setSuccess(true);
                 toast.success('Registration Successful!');
-                console.log(res.user)
+                // console.log(res.user)
                 form.reset();
                 navigate(location?.state?.from || "/");
             })
@@ -67,13 +67,13 @@ const Register = () => {
                     title: 'Registration Failed!',
                     text: err.message,
                 });
-                console.log(err.message)
+                // console.log(err.message)
             })
 
 
     }
     return (
-        <div className="hero min-h-screen">
+        <div className="hero min-h-screen lg:mt-[105px] mt-[105px]">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 {/* Lottie Animation */}
                 <div className="text-center lg:text-left w-96">

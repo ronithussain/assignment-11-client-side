@@ -40,19 +40,19 @@ const AuthProvider = ({ children }) => {
     // onAuthStateChange functionality
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('user state captured', currentUser?.email)
+            // console.log('user state captured', currentUser?.email)
 
             // jwt token work starts here
             if (currentUser?.email) {
                 const user = { email: currentUser.email};
 
-                axios.post('http://localhost:8000/jwt',user ,{withCredentials:true})
-                .then(res => console.log('login token',res.data))
+                axios.post('https://assignment-11-server-side-ashen.vercel.app/jwt',user ,{withCredentials:true})
+                // .then(res => console.log('login token',res.data))
                 setUser(currentUser);
                 setLoading(false);
             }
             else {
-                axios.post('http://localhost:8000/logout', {},)
+                axios.post('https://assignment-11-server-side-ashen.vercel.app/logout', {},{withCredentials:true})
                 .then(res => console.log('logout', res.data))
                 setUser(null)
                 setLoading(false);

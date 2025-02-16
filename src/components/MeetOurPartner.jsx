@@ -54,7 +54,7 @@ const partners = [
 const MeetOurPartner = () => {
     return (
         <section className="py-12 bg-[#1A1B1E] text-white">
-      <div className="container mx-auto text-center">
+      <div className="w-11/12 mx-auto text-center">
       <h2 className='lg:text-5xl text-2xl  md:text-3xl font-bold bg-gradient-to-r from-white via-white/70 to-[#1E3E62] text-transparent bg-clip-text text-center mb-6'>Meet Our Partners"</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-1">
           {partners.map((partner) => (

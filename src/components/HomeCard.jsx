@@ -6,7 +6,7 @@ const HomeCard = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/services?limit=6')
+        fetch('https://assignment-11-server-side-ashen.vercel.app/services?limit=6')
             .then(res => res.json())
             .then(data => {
                 setServices(data)

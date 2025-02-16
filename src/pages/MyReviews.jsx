@@ -19,12 +19,12 @@ const MyReviews = () => {
 
     useEffect(() => {
         // Fetch reviews based on the logged-in user's email
-        fetch(`http://localhost:8000/my-reviews/${user?.email}`)
+        fetch(`https://assignment-11-server-side-ashen.vercel.app/my-reviews/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data, startDate);
                 // setStartDate(new Date(reviews.deadline))
-                console.log(data);
+                // console.log(data);
             });
     }, [user?.email]);
 
@@ -46,15 +46,15 @@ const MyReviews = () => {
             return;
         }
         try {
-            const { data } = await axios.delete(`http://localhost:8000/delete-review/${id}`);
-            console.log(data)
+            const { data } = await axios.delete(`https://assignment-11-server-side-ashen.vercel.app/delete-review/${id}`);
+            // console.log(data)
             toast.success('Reviews Delete is Successfully')
 
             // Update UI
             setReviews(reviews.filter(review => review._id !== id));
         }
         catch (error) {
-            console.log('Failed', error.message)
+            // console.log('Failed', error.message)
             toast.error('Review Delete is Failed')
         }
         setIsDeleteOpen(false);
@@ -75,7 +75,7 @@ const MyReviews = () => {
         }
 
         try {
-            const { data } = await axios.put(`http://localhost:8000/update-review/${selectedReview._id}`, reviewData)
+            const { data } = await axios.put(`https://assignment-11-server-side-ashen.vercel.app/update-review/${selectedReview._id}`, reviewData)
             if (data.modifiedCount > 0) {
                 toast.success('Review Updated Successfully');
 
@@ -93,7 +93,7 @@ const MyReviews = () => {
     }
 
     return (
-        <div className="lg:mt-[120px] mt-[110px]" style={{
+        <div className="lg:mt-[105px] mt-[105px]" style={{
             backgroundImage: `url(${formBgImg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -129,7 +129,7 @@ const MyReviews = () => {
                                 </div>
 
                                 {/* Buttons */}
-                                <div className="mt-3 flex space-x-6">
+                                <div className="mt-3 flex space-x-2 sm:space-x-4">
                                     <button
                                         onClick={() => openUpdateModal(review)}
                                         className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-2 px-6 rounded-md transform hover:scale-105 hover:from-blue-600 hover:to-indigo-600 transition duration-300 ease-in-out"

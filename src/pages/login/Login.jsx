@@ -39,7 +39,7 @@ const Login = () => {
                 });
                 form.reset();
                 navigate(from);
-                console.log(result.user)
+                // console.log(result.user)
             })
             .catch(err => {
                 setError(err.message)
@@ -48,12 +48,12 @@ const Login = () => {
                     title: 'Oops...',
                     text: err.message,
                 });
-                console.log(err.message)
+                // console.log(err.message)
             })
 
     }
     return (
-        <div className="hero min-h-screen"
+        <div className="hero min-h-screen lg:mt-[105px] mt-[105px]"
             style={{
                 backgroundImage: `url(${login2})`,
                 backgroundSize: "cover",
