@@ -9,6 +9,7 @@ import Rating from "react-rating";
 import toast from "react-hot-toast";
 import navImg from '../assets/review.jpg'
 import { motion } from "framer-motion";
+import UseAxiosSecure from "../hooks/UseAxiosSecure";
 
 
 
@@ -19,18 +20,26 @@ const ServiceDetails = () => {
     const { user } = UseAuth();
     const [startDate, setStartDate] = useState(new Date());
     const [ratings, setRatings] = useState(3);
-    const navigate = useNavigate();
     //_____________________________________
     const [reviews, setReviews] = useState([]);
 
 
+    const axiosSecure = UseAxiosSecure()
     useEffect(() => {
-        fetch(`https://assignment-11-server-side-ashen.vercel.app/services/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setService(data);
-                setLoading(false);
-            })
+        // fetch(`https://assignment-11-server-side-ashen.vercel.app/services/${id}`)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         setService(data);
+        //         setLoading(false);
+        //     })
+        axiosSecure.get(`/services/${id}`)
+        .then(res => {
+          setService(res.data)
+          setLoading(false);
+        })
+        .catch(error => {
+            console.error('Error fetching services:', error);
+        });
     }, [id]);
 
 
@@ -41,8 +50,6 @@ const ServiceDetails = () => {
             .then(res => res.json())
             .then(data => {
                 setReviews(data, startDate);
-                // setStartDate(new Date(reviews.deadline))
-                // console.log(data);
             });
     }, [user?.email]);
 
