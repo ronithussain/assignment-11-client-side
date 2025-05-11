@@ -1,10 +1,9 @@
-
-import Carousel from '../components/Carousel';
+import Banner from './shared/Banner';
 
 const Home = () => {
     return (
-        <div className='lg:mt-[105px] mt-[105px] '>
-            <Carousel></Carousel>
+        <div>
+            <Banner></Banner>
         </div>
     );
 };

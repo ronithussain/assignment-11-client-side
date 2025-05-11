@@ -53,7 +53,7 @@ const Login = () => {
 
     }
     return (
-        <div className="hero min-h-screen lg:mt-[105px] mt-[105px]"
+        <div className="hero min-h-screen"
             style={{
                 backgroundImage: `url(${login2})`,
                 backgroundSize: "cover",
@@ -61,7 +61,7 @@ const Login = () => {
             }}>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 {/* Lottie Animation */}
-                <div className="text-center lg:text-left w-96">
+                <div className="text-center lg:text-left w-[60%] lg:w-[90%]">
                     <Lottie animationData={loginLottieImg} />
                 </div>
 

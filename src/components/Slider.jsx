@@ -4,7 +4,7 @@ const Slider = ({ image, text }) => {
 
   return (
     <div
-      className='w-full bg-center bg-cover h-[38rem]'
+      className='w-full bg-center bg-cover h-[50rem]'
       style={{
         backgroundImage: `url(${image})`,
       }}

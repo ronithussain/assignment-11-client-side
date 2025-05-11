@@ -17,7 +17,7 @@ import imageSlider3 from '../assets/bgimg3.jpg'
 
 export default function Carousel() {
   return (
-    <div className=''>
+    <div className='-mt-1'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -29,7 +29,7 @@ export default function Carousel() {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+   
         modules={[Autoplay, Pagination, Navigation]}
       >
         <SwiperSlide>

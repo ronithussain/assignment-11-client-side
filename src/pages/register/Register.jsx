@@ -73,10 +73,10 @@ const Register = () => {
 
     }
     return (
-        <div className="hero min-h-screen lg:mt-[105px] mt-[105px]">
+        <div className="hero min-h-screen ">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 {/* Lottie Animation */}
-                <div className="text-center lg:text-left w-96">
+                <div className="text-center lg:text-left w-[50%] lg:w-[80%]">
                     <Lottie animationData={registerLottieImg} />
                 </div>
 
